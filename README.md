@@ -37,6 +37,11 @@ Script que repara bug de cPanel cuando se reinicia un servicio mostrando "Too ma
 	wget https://raw.githubusercontent.com/wnpower/Scripts-Utils-Linux/master/vps/fix_var_run_symlinks.sh
 	bash fix_var_run_symlinks.sh
 
+## vps/fix_nftables_al8.sh
+Script que repara problema de nftables en OpenVZ.
+### Modo de uso
+	wget https://raw.githubusercontent.com/wnpower/Scripts-Utils-Linux/master/vps/fix_nftables_al8.sh -O /var/fix_nftables_al8.sh; chmod 755 /var/fix_nftables_al8.sh; /var/fix_nftables_al8.sh; rm -f /var/fix_nftables_al8.sh
+
 ## cwp/restore_all_dbs.sh
 Script que crea restaura todas las bases de datos de un backup en CentOS Web Panel (En el caso catastrófico que se ha reinstalado o esté corrupto MySQL)
 ## Modo de uso
