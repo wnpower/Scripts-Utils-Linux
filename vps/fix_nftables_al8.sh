@@ -2,6 +2,22 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 if (grep -i "AlmaLinux release 8" /etc/redhat-release > /dev/null && hostnamectl status | grep "Virtualization: openvz" > /dev/null); then
+
+	if [ "$1" = "--revert" ]; then
+
+		echo "## ESTO REINICIA EL SERVIDOR (CTRL + C para cancelar) ##"
+		sleep 5
+
+		dnf versionlock clear
+		dnf -y remove yum-plugin-versionlock
+		rpm -e --nodeps --justdb --noscripts --notriggers nftables
+		dnf install -y iptables nftables iptables-ebtables iptables-services
+
+		reboot
+
+		exit 0
+	fi
+
 	dnf remove iptables iptables-services iptables-libs -y
 	dnf install http://mirror.centos.org/centos/7/os/x86_64/Packages/iptables-1.4.21-35.el7.x86_64.rpm -y
 	dnf -y install yum-plugin-versionlock
